@@ -1,0 +1,39 @@
+name: Weekly COT Data Refresh
+
+on:
+  schedule:
+    # Every Friday at 16:00 ET = 21:00 UTC
+    # (CFTC publishes at ~15:30 ET, we give 30 min buffer)
+    - cron: '0 21 * * 5'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  refresh:
+    name: Trigger COT Data Refresh
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Trigger /api/refresh on Railway backend
+        run: |
+          RESPONSE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+            -X POST \
+            "${{ secrets.COT_API_URL }}/api/refresh?secret=${{ secrets.COT_SECRET_KEY }}" \
+            --max-time 30)
+
+          echo "HTTP status: $RESPONSE"
+          echo "Response body:"
+          cat /tmp/response.json
+
+          if [ "$RESPONSE" != "200" ]; then
+            echo "ERROR: API returned HTTP $RESPONSE"
+            exit 1
+          fi
+
+      - name: Verify data was updated
+        run: |
+          sleep 15
+          STATUS=$(curl -s "${{ secrets.COT_API_URL }}/api/status")
+          echo "Current status:"
+          echo "$STATUS" | python3 -m json.tool || echo "$STATUS"

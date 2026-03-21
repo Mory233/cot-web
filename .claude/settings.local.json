@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell:*)",
+      "WebFetch(domain:market-bulls.com)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.cftc.gov)",
+      "WebFetch(domain:cot-web-production.up.railway.app)",
+      "WebFetch(domain:ai-champs.cz)",
+      "WebSearch",
+      "WebFetch(domain:publicreporting.cftc.gov)",
+      "Bash(rm:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(unzip:*)",
+      "Bash(python3:*)",
+      "Bash(py:*)",
+      "Bash(Invoke-RestMethod:*)",
+      "Bash(LC_ALL=C:*)",
+      "Bash(/c/Users/Lenovo/AppData/Local/Microsoft/WindowsApps/python3:*)",
+      "Bash(cmd:*)"
+    ]
+  }
+}
