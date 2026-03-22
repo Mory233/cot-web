@@ -64,20 +64,25 @@
                     e.preventDefault();
                     setActiveNav(sec);
                     scrollToSection(sec);
-                } else if (el) {
-                    // Section exists but hidden — we're in a detail view
-                    // Click the back button to return to overview, then scroll
-                    e.preventDefault();
-                    var backBtn = document.querySelector('.cot-back-btn');
-                    if (backBtn) {
-                        backBtn.click();
-                        setTimeout(function () { scrollToSection(sec); }, 120);
-                    } else {
-                        scrollToSection(sec);
+                } else {
+                    // Either in detail view or section not yet rendered
+                    // Always prevent default on the home page and handle ourselves
+                    var isHomePage = (window.location.pathname === '/' || window.location.pathname === '/index.php' || document.querySelector('.cot-dashboard-container') !== null);
+                    if (isHomePage) {
+                        e.preventDefault();
+                        var backBtn = document.querySelector('.cot-back-btn');
+                        if (backBtn) {
+                            // In detail view — go back first, then scroll
+                            backBtn.click();
+                            setTimeout(function () { scrollToSection(sec); }, 450);
+                        } else {
+                            // In overview but section not yet rendered — retry scroll
+                            scrollToSection(sec);
+                        }
+                        setActiveNav(sec);
                     }
-                    setActiveNav(sec);
+                    // else: different page — browser follows href (redirects home with hash)
                 }
-                // else: browser follows href (home + hash on another page)
                 if (mobile) mobile.classList.remove('open');
             });
         });

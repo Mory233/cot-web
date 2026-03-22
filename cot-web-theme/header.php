@@ -166,12 +166,12 @@
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
          class="nav-link nav-link-overview <?php echo is_front_page() ? 'active' : ''; ?>">Overview</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-forex"    class="nav-link" data-section="forex">Forex</a>
+      <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-crypto"   class="nav-link" data-section="crypto">Crypto</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-indices"  class="nav-link" data-section="indices">Indices</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-bonds"    class="nav-link" data-section="bonds">Bonds</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-energy"   class="nav-link" data-section="energy">Energy</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-metals"   class="nav-link" data-section="metals">Metals</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-grains"   class="nav-link" data-section="grains">Commodities</a>
-      <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-crypto"   class="nav-link" data-section="crypto">Crypto</a>
       <a href="<?php echo esc_url( home_url( '/co-je-cot/' ) ); ?>"
          class="nav-link nav-info <?php echo is_page( 'co-je-cot' ) ? 'active' : ''; ?>">What is COT?</a>
     </div>
@@ -189,12 +189,12 @@
   <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Overview</a>
   <div class="cot-nav-mobile-divider"></div>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-forex"    class="nav-link" data-section="forex">Forex</a>
+  <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-crypto"   class="nav-link" data-section="crypto">Crypto</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-indices"  class="nav-link" data-section="indices">Indices</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-bonds"    class="nav-link" data-section="bonds">Bonds</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-energy"   class="nav-link" data-section="energy">Energy</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-metals"   class="nav-link" data-section="metals">Metals</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-grains"   class="nav-link" data-section="grains">Commodities</a>
-  <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-crypto"   class="nav-link" data-section="crypto">Crypto</a>
   <div class="cot-nav-mobile-divider"></div>
   <a href="<?php echo esc_url( home_url( '/co-je-cot/' ) ); ?>">What is COT?</a>
 </div>

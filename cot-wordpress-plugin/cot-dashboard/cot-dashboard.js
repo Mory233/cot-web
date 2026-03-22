@@ -27,7 +27,7 @@
   };
 
   // softs + livestock are merged into grains under one "COMMODITIES" section
-  var CATEGORIES = ['forex','indices','bonds','energy','metals','grains','crypto'];
+  var CATEGORIES = ['forex','crypto','indices','bonds','energy','metals','grains'];
 
   var CATEGORY_LABELS = {
     forex:     'Forex',
