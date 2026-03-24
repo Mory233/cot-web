@@ -280,6 +280,14 @@
         var val = this.value;
         searchTimer = setTimeout(function () {
           STATE.searchQuery = val.toLowerCase();
+          /* If in detail view, exit it so search results are visible */
+          var det = qs('#cot-detail-inner',  container);
+          var ov  = qs('#cot-overview-inner', container);
+          if (det && det.style.display !== 'none') {
+            STATE.selectedMarket = null;
+            det.style.display = 'none';
+            ov.style.display  = 'block';
+          }
           renderTable(container, false);
         }, 280);
       });
