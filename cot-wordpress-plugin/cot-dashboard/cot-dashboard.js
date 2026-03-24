@@ -922,6 +922,41 @@
           STATE.loading = false;
           buildLayout(container, results[1]);
           renderTable(container, true);
+
+          /* Expose global nav helper for theme.js —
+             allows the fixed nav bar to jump to any section,
+             even when the detail view is open. */
+          window.cotGoToSection = function (sectionKey) {
+            var det = qs('#cot-detail-inner',  container);
+            var ov  = qs('#cot-overview-inner', container);
+
+            function scrollTo() {
+              var tries = 0;
+              (function attempt() {
+                var el = document.getElementById('cot-section-' + sectionKey);
+                if (el) {
+                  var offset = 80 + Math.round(window.innerHeight * 0.12);
+                  window.scrollTo({
+                    top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offset),
+                    behavior: 'smooth',
+                  });
+                } else if (++tries < 15) {
+                  setTimeout(attempt, 300);
+                }
+              }());
+            }
+
+            if (det && det.style.display !== 'none') {
+              /* Currently in detail view — go back to overview first */
+              STATE.selectedMarket = null;
+              det.style.display = 'none';
+              ov.style.display  = 'block';
+              renderTable(container, false);
+              setTimeout(scrollTo, 400);
+            } else {
+              scrollTo();
+            }
+          };
         })
         .catch(function (e) {
           STATE.loading = false;

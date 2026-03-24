@@ -20,14 +20,21 @@
         var mobile = document.getElementById('cot-nav-mobile');
 
         if (toggle && mobile) {
-            toggle.addEventListener('click', function () {
+            function toggleMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
                 mobile.classList.toggle('open');
-            });
-            document.addEventListener('click', function (e) {
+            }
+            toggle.addEventListener('click',      toggleMenu);
+            toggle.addEventListener('touchstart', toggleMenu, { passive: false });
+
+            function closeMenu(e) {
                 if (!toggle.contains(e.target) && !mobile.contains(e.target)) {
                     mobile.classList.remove('open');
                 }
-            });
+            }
+            document.addEventListener('click',      closeMenu);
+            document.addEventListener('touchstart', closeMenu, { passive: true });
         }
 
         // ── Section scroll helpers ─────────────────────────────
@@ -51,38 +58,26 @@
         }
 
         // ── Nav section link clicks ────────────────────────────
-        // If section visible on page → smooth scroll
-        // If section hidden (detail view active) → click back btn first, then scroll
-        // Otherwise → browser follows href (different page redirect)
+        // On the home page: use cotGoToSection (handles detail→overview transition)
+        // Otherwise: browser follows href (redirects home with hash)
         document.querySelectorAll('.nav-link[data-section]').forEach(function (link) {
             link.addEventListener('click', function (e) {
-                var sec = this.dataset.section;
-                var el  = document.getElementById('cot-section-' + sec);
+                var sec        = this.dataset.section;
+                var isHomePage = (window.location.pathname === '/' ||
+                                  window.location.pathname === '/index.php' ||
+                                  document.querySelector('.cot-dashboard-container') !== null);
 
-                if (el && el.offsetParent !== null) {
-                    // Section is visible in overview — smooth scroll
+                if (isHomePage) {
                     e.preventDefault();
                     setActiveNav(sec);
-                    scrollToSection(sec);
-                } else {
-                    // Either in detail view or section not yet rendered
-                    // Always prevent default on the home page and handle ourselves
-                    var isHomePage = (window.location.pathname === '/' || window.location.pathname === '/index.php' || document.querySelector('.cot-dashboard-container') !== null);
-                    if (isHomePage) {
-                        e.preventDefault();
-                        var backBtn = document.querySelector('.cot-back-btn');
-                        if (backBtn) {
-                            // In detail view — go back first, then scroll
-                            backBtn.click();
-                            setTimeout(function () { scrollToSection(sec); }, 450);
-                        } else {
-                            // In overview but section not yet rendered — retry scroll
-                            scrollToSection(sec);
-                        }
-                        setActiveNav(sec);
+                    if (typeof window.cotGoToSection === 'function') {
+                        // dashboard JS handles back-to-overview + scroll
+                        window.cotGoToSection(sec);
+                    } else {
+                        scrollToSection(sec);
                     }
-                    // else: different page — browser follows href (redirects home with hash)
                 }
+                // else: different page — browser follows href (redirects home with hash)
                 if (mobile) mobile.classList.remove('open');
             });
         });
