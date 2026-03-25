@@ -943,7 +943,9 @@
               (function attempt() {
                 var el = document.getElementById('cot-section-' + sectionKey);
                 if (el) {
-                  var offset = 80 + Math.round(window.innerHeight * 0.12);
+                  /* Use actual nav bottom so admin-bar offset is included */
+                  var navEl  = document.querySelector('.cot-nav');
+                  var offset = navEl ? (navEl.getBoundingClientRect().bottom + 24) : 104;
                   window.scrollTo({
                     top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offset),
                     behavior: 'smooth',
@@ -965,6 +967,23 @@
               scrollTo();
             }
           };
+
+          /* ── Nav link handlers ─────────────────────────────────────────────
+             Bound here so nav works even when theme.js fails to load (403 etc).
+             e.preventDefault() is safe: this code only runs on pages that
+             contain .cot-dashboard-container (i.e. the home page).          */
+          document.querySelectorAll('.nav-link[data-section]').forEach(function (navLink) {
+            navLink.addEventListener('click', function (e) {
+              e.preventDefault();
+              var sec = this.dataset.section;
+              document.querySelectorAll('.nav-link[data-section]').forEach(function (l) {
+                l.classList.toggle('active', l.dataset.section === sec);
+              });
+              window.cotGoToSection(sec);
+              var mob = document.getElementById('cot-nav-mobile');
+              if (mob) mob.classList.remove('open');
+            });
+          });
         })
         .catch(function (e) {
           STATE.loading = false;
