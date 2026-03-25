@@ -158,8 +158,8 @@
   <div class="cot-nav-inner">
 
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cot-nav-logo">
-      <span class="logo-main"><span class="logo-czech">CZECH</span> <span class="logo-cot">COT</span> <span class="logo-terminal">TERMINAL</span></span>
-      <span class="logo-sub">Tracks banks &middot; Hedge funds &middot; Retail</span>
+      <span class="logo-main"><span class="logo-cot">COT</span> <span class="logo-terminal">TERMINAL</span></span>
+      <span class="logo-sub">Futures market positioning</span>
     </a>
 
     <div class="cot-nav-links">

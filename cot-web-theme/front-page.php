@@ -3,12 +3,12 @@
 <!-- Hero banner -->
 <section class="cot-hero">
   <div class="cot-hero-inner">
-    <div class="cot-hero-eyebrow">Czech COT Terminal</div>
-    <h1>COT Reports <span>Overview</span></h1>
+    <div class="cot-hero-eyebrow">CFTC Commitments of Traders &nbsp;&middot;&nbsp; Free &nbsp;&middot;&nbsp; No Signup Required</div>
+    <h1>Track Where <span>Banks&nbsp;&amp;&nbsp;Funds</span> Really Stand</h1>
     <p>
-      Weekly Commitments of Traders data from CFTC.gov &mdash;
-      positions of <strong>banks</strong>, <strong>hedge funds</strong> and <strong>retail</strong>
-      across futures markets of all major instruments.
+      COT Terminal turns complex CFTC filings into <strong>clear, interactive charts</strong>.
+      One dashboard covering 50+ futures markets across Forex, Indices, Metals, Energy and Crypto
+      &mdash; with 25&nbsp;years of history and a new update every Friday.
     </p>
     <div class="cot-hero-meta">
       <span class="cot-hero-badge">
