@@ -36,9 +36,10 @@ remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
-// ── Auto-create pages on theme activation ──────────────────────────────────
+// ── Auto-create pages (on activation AND on every load if missing) ─────────
 
 add_action( 'after_switch_theme', 'cot_theme_setup_pages' );
+add_action( 'wp_loaded',          'cot_theme_setup_pages' );
 
 function cot_theme_setup_pages() {
     $home = get_page_by_path( 'cot-overview' );
