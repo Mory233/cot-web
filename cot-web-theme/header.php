@@ -172,6 +172,8 @@
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-energy"   class="nav-link" data-section="energy">Energy</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-metals"   class="nav-link" data-section="metals">Metals</a>
       <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-grains"   class="nav-link" data-section="grains">Commodities</a>
+      <a href="<?php echo esc_url( home_url( '/trade-like-banks/' ) ); ?>"
+         class="nav-link nav-info <?php echo is_page( 'trade-like-banks' ) ? 'active' : ''; ?>">Trade Like Banks</a>
       <a href="<?php echo esc_url( home_url( '/co-je-cot/' ) ); ?>"
          class="nav-link nav-info <?php echo is_page( 'co-je-cot' ) ? 'active' : ''; ?>">What is COT?</a>
     </div>
@@ -195,6 +197,8 @@
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-energy"   class="nav-link" data-section="energy">Energy</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-metals"   class="nav-link" data-section="metals">Metals</a>
   <a href="<?php echo esc_url( home_url('/') ); ?>#cot-section-grains"   class="nav-link" data-section="grains">Commodities</a>
+  <div class="cot-nav-mobile-divider"></div>
+  <a href="<?php echo esc_url( home_url( '/trade-like-banks/' ) ); ?>">Trade Like Banks</a>
   <div class="cot-nav-mobile-divider"></div>
   <a href="<?php echo esc_url( home_url( '/co-je-cot/' ) ); ?>">What is COT?</a>
 </div>

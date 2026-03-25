@@ -64,6 +64,16 @@ function cot_theme_setup_pages() {
         ] );
     }
 
+    $banks = get_page_by_path( 'trade-like-banks' );
+    if ( ! $banks ) {
+        wp_insert_post( [
+            'post_title'  => 'Trade Like Banks',
+            'post_name'   => 'trade-like-banks',
+            'post_status' => 'publish',
+            'post_type'   => 'page',
+        ] );
+    }
+
     update_option( 'show_on_front', 'page' );
     update_option( 'page_on_front', $home_id );
 }
