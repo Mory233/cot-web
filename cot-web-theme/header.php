@@ -7,12 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR63CSERPH"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEJCLDMPZB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-PR63CSERPH');
+    gtag('config', 'G-SEJCLDMPZB');
   </script>
   <?php wp_head(); ?>
   <style>
